@@ -2,7 +2,7 @@ $().ready(function () {
 var myDataRef = new Firebase('https://burning-torch-1501.firebaseio.com/');
 
 
-
+console.log(myDataRef.user);
 myDataRef.push(
 {
   title: "Hello World!",
@@ -23,8 +23,8 @@ myDataRef.push(
         }
       });
       myDataRef.on('child_added', function(snapshot) {
-        var message = snapshot.val();
-        displayChatMessage(message.name, message.text);
+        alert(snapshot);
+//      displayChatMessage(message.name, message.text);
       });
       function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
